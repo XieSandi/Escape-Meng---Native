@@ -8,11 +8,20 @@ public final class Generated {
         public static final String LOAD_FORM = "loadForm";
         public static final String READY = "ready";
         public static final String REQUEST_INFO_UPDATE = "requestInfoUpdate";
+        public static final String REQUEST_TRACKING_AUTHORIZATION = "requestTrackingAuthorization";
         public static final String RESET = "reset";
         public static final String SHOW_FORM = "showForm";
+        public static final String TRACKING_AUTHORIZATION_STATUS = "trackingAuthorizationStatus";
     }
 
     public final class Events {
         public static final String READY = "consent.ready";
+    }
+
+    public final class ConsentStatus {
+        public static final int UNKNOWN = 0;
+        public static final int REQUIRED = 1;
+        public static final int NOT_REQUIRED = 2;
+        public static final int OBTAINED = 3;
     }
 }

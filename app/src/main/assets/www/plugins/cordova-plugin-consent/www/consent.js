@@ -62,13 +62,22 @@ var NativeActions;
     NativeActions["loadForm"] = "loadForm";
     NativeActions["ready"] = "ready";
     NativeActions["requestInfoUpdate"] = "requestInfoUpdate";
+    NativeActions["requestTrackingAuthorization"] = "requestTrackingAuthorization";
     NativeActions["reset"] = "reset";
     NativeActions["showForm"] = "showForm";
+    NativeActions["trackingAuthorizationStatus"] = "trackingAuthorizationStatus";
 })(NativeActions || (NativeActions = {}));
 var Events;
 (function (Events) {
     Events["ready"] = "consent.ready";
 })(Events || (Events = {}));
+var ConsentStatus;
+(function (ConsentStatus) {
+    ConsentStatus[ConsentStatus["Unknown"] = 0] = "Unknown";
+    ConsentStatus[ConsentStatus["Required"] = 1] = "Required";
+    ConsentStatus[ConsentStatus["NotRequired"] = 2] = "NotRequired";
+    ConsentStatus[ConsentStatus["Obtained"] = 3] = "Obtained";
+})(ConsentStatus || (ConsentStatus = {}));
 var execAsync = function (action, args) {
     return new Promise(function (resolve, reject) {
         cordova.exec(resolve, reject, 'Consent', action, args);
@@ -93,19 +102,19 @@ var DebugGeography;
     DebugGeography[DebugGeography["EEA"] = 1] = "EEA";
     DebugGeography[DebugGeography["NotEEA"] = 2] = "NotEEA";
 })(DebugGeography || (DebugGeography = {}));
-var ConsentStatus;
-(function (ConsentStatus) {
-    ConsentStatus[ConsentStatus["Unknown"] = 0] = "Unknown";
-    ConsentStatus[ConsentStatus["Required"] = 1] = "Required";
-    ConsentStatus[ConsentStatus["NotRequired"] = 2] = "NotRequired";
-    ConsentStatus[ConsentStatus["Obtained"] = 3] = "Obtained";
-})(ConsentStatus || (ConsentStatus = {}));
 var FormStatus;
 (function (FormStatus) {
     FormStatus[FormStatus["Unknown"] = 0] = "Unknown";
     FormStatus[FormStatus["Available"] = 1] = "Available";
     FormStatus[FormStatus["Unavailable"] = 2] = "Unavailable";
 })(FormStatus || (FormStatus = {}));
+var TrackingAuthorizationStatus;
+(function (TrackingAuthorizationStatus) {
+    TrackingAuthorizationStatus[TrackingAuthorizationStatus["notDetermined"] = 0] = "notDetermined";
+    TrackingAuthorizationStatus[TrackingAuthorizationStatus["restricted"] = 1] = "restricted";
+    TrackingAuthorizationStatus[TrackingAuthorizationStatus["denied"] = 2] = "denied";
+    TrackingAuthorizationStatus[TrackingAuthorizationStatus["authorized"] = 3] = "authorized";
+})(TrackingAuthorizationStatus || (TrackingAuthorizationStatus = {}));
 var ConsentForm = /** @class */ (function () {
     function ConsentForm(id) {
         this.id = id;
@@ -122,6 +131,44 @@ var Consent = /** @class */ (function () {
         this.FormStatus = FormStatus;
         initPlugin();
     }
+    Consent.prototype.trackingAuthorizationStatus = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var n;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!(cordova.platformId === 'ios')) return [3 /*break*/, 2];
+                        return [4 /*yield*/, execAsync(NativeActions.trackingAuthorizationStatus)];
+                    case 1:
+                        n = _a.sent();
+                        if (n !== false) {
+                            return [2 /*return*/, TrackingAuthorizationStatus[TrackingAuthorizationStatus[n]]];
+                        }
+                        _a.label = 2;
+                    case 2: return [2 /*return*/, false];
+                }
+            });
+        });
+    };
+    Consent.prototype.requestTrackingAuthorization = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var n;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!(cordova.platformId === 'ios')) return [3 /*break*/, 2];
+                        return [4 /*yield*/, execAsync(NativeActions.requestTrackingAuthorization)];
+                    case 1:
+                        n = _a.sent();
+                        if (n !== false) {
+                            return [2 /*return*/, TrackingAuthorizationStatus[TrackingAuthorizationStatus[n]]];
+                        }
+                        _a.label = 2;
+                    case 2: return [2 /*return*/, false];
+                }
+            });
+        });
+    };
     Consent.prototype.getConsentStatus = function () {
         return __awaiter(this, void 0, void 0, function () {
             var n;

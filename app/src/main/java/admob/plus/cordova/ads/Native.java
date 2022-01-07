@@ -1,6 +1,5 @@
 package admob.plus.cordova.ads;
 
-import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -11,6 +10,7 @@ import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.nativead.NativeAd;
+import com.google.android.gms.ads.nativead.NativeAdView;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -110,11 +110,11 @@ public class Native extends AdBase {
         }
 
         view.setVisibility(View.VISIBLE);
-        view.setX((float) dpToPx(Objects.requireNonNull(ctx.optDouble("x"))));
-        view.setY((float) dpToPx(Objects.requireNonNull(ctx.optDouble("y"))));
+        view.setX((float) dpToPx(ctx.optDouble("x", 0.0)));
+        view.setY((float) dpToPx(ctx.optDouble("y", 0.0)));
         ViewGroup.LayoutParams params = view.getLayoutParams();
-        params.width = (int) dpToPx(Objects.requireNonNull(ctx.optDouble("width")));
-        params.height = (int) dpToPx(Objects.requireNonNull(ctx.optDouble("height")));
+        params.width = (int) dpToPx(ctx.optDouble("width", 0.0));
+        params.height = (int) dpToPx(ctx.optDouble("height", 0.0));
         view.setLayoutParams(params);
 
         viewProvider.didShow(this);
@@ -137,6 +137,14 @@ public class Native extends AdBase {
         if (mAd != null) {
             mAd.destroy();
             mAd = null;
+        }
+        if (view != null) {
+            if (view instanceof NativeAdView) {
+                NativeAdView v = (NativeAdView) view;
+                v.removeAllViews();
+                v.destroy();
+            }
+            view = null;
         }
         mLoader = null;
     }

@@ -294,7 +294,7 @@ dependencies {
 
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
-    implementation "com.google.android.gms:play-services-ads:20.1.0"
+    implementation "com.google.android.gms:play-services-ads:20.3.0"
     implementation "com.google.android.ump:user-messaging-platform:1.0.0+"
     // SUB-PROJECT DEPENDENCIES END
 }

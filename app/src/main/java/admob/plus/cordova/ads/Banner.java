@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.LoadAdError;
@@ -40,7 +39,6 @@ public class Banner extends AdBase {
     private final Integer offset;
     private AdView mAdView;
     private RelativeLayout mRelativeLayout = null;
-    private AdRequest mAdRequest = null;
     private AdView mAdViewOld = null;
 
     public Banner(ExecuteContext ctx) {
@@ -70,15 +68,17 @@ public class Banner extends AdBase {
     }
 
     @Override
-    public void load(Context ctx) {
-        final AdRequest adRequest = ctx.optAdRequest();
+    public boolean isLoaded() {
+        return mAdView != null;
+    }
 
+    @Override
+    public void load(Context ctx) {
         if (mAdView == null) {
             mAdView = createBannerView();
         }
 
         mAdView.loadAd(adRequest);
-        mAdRequest = adRequest;
         ctx.resolve();
     }
 
@@ -89,21 +89,25 @@ public class Banner extends AdBase {
         adView.setAdListener(new AdListener() {
             @Override
             public void onAdClicked() {
+                emit(Events.AD_CLICK);
                 emit(Events.BANNER_CLICK);
             }
 
             @Override
             public void onAdClosed() {
+                emit(Events.AD_DISMISS);
                 emit(Events.BANNER_CLOSE);
             }
 
             @Override
             public void onAdFailedToLoad(LoadAdError error) {
+                emit(Events.AD_LOAD_FAIL, error);
                 emit(Events.BANNER_LOAD_FAIL, error);
             }
 
             @Override
             public void onAdImpression() {
+                emit(Events.AD_IMPRESSION);
                 emit(Events.BANNER_IMPRESSION);
             }
 
@@ -114,34 +118,34 @@ public class Banner extends AdBase {
                     mAdViewOld = null;
                 }
 
-                runJustBeforeBeingDrawn(adView, new Runnable() {
-                    @Override
-                    public void run() {
+                runJustBeforeBeingDrawn(adView, () -> emit(Events.BANNER_SIZE, computeAdSize()));
 
-                        int width = adView.getWidth();
-                        int height = adView.getHeight();
-
-                        emit(Events.BANNER_SIZE, new HashMap<String, Object>() {{
-                            put("size", new HashMap<String, Object>() {{
-                                put("width", pxToDp(width));
-                                put("height", pxToDp(height));
-                                put("widthInPixels", width);
-                                put("heightInPixels", height);
-                            }});
-                        }});
-
-                    }
-                });
-
+                emit(Events.AD_LOAD, computeAdSize());
                 emit(Events.BANNER_LOAD);
             }
 
             @Override
             public void onAdOpened() {
+                emit(Events.AD_SHOW);
                 emit(Events.BANNER_OPEN);
             }
         });
         return adView;
+    }
+
+    @NonNull
+    private HashMap<String, Object> computeAdSize() {
+        int width = mAdView.getWidth();
+        int height = mAdView.getHeight();
+
+        return new HashMap<String, Object>() {{
+            put("size", new HashMap<String, Object>() {{
+                put("width", pxToDp(width));
+                put("height", pxToDp(height));
+                put("widthInPixels", width);
+                put("heightInPixels", height);
+            }});
+        }};
     }
 
     @Override
@@ -183,7 +187,6 @@ public class Banner extends AdBase {
     }
 
     private void reloadBannerView() {
-        if (mAdRequest == null) return;
         if (mAdView == null || mAdView.getVisibility() == View.GONE) return;
 
         pauseBannerViews();
@@ -191,7 +194,7 @@ public class Banner extends AdBase {
         mAdViewOld = mAdView;
 
         mAdView = createBannerView();
-        mAdView.loadAd(mAdRequest);
+        mAdView.loadAd(adRequest);
         addBannerView();
     }
 

@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import com.google.ads.mediation.admob.AdMobAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.ads.rewarded.ServerSideVerificationOptions;
 
@@ -35,6 +36,12 @@ public interface Context {
 
     @Nullable
     Double optDouble(@NonNull String name);
+
+    default double optDouble(@NonNull String name, double defaultValue) {
+        final Double v = optDouble(name);
+        if (v == null) return defaultValue;
+        return v;
+    }
 
     @Nullable
     default Float optFloat(@NonNull String name) {
@@ -161,5 +168,19 @@ public interface Context {
             builder.setUserId(serverSideVerification.optString("userId"));
         }
         return builder.build();
+    }
+
+    default void configure(Helper helper) {
+        Boolean appMuted = optAppMuted();
+        if (appMuted != null) {
+            MobileAds.setAppMuted(appMuted);
+        }
+        Float appVolume = optAppVolume();
+        if (appVolume != null) {
+            MobileAds.setAppVolume(appVolume);
+        }
+        MobileAds.setRequestConfiguration(optRequestConfiguration());
+        helper.configForTestLab();
+        resolve();
     }
 }

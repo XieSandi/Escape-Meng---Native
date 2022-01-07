@@ -13,11 +13,17 @@
               "count": 1
             },
             {
-              "xml": "<meta-data android:name=\"com.google.android.gms.ads.APPLICATION_ID\" android:value=\"ca-app-pub-3940256099942544~3347511713\" />",
+              "xml": "<meta-data android:name=\"com.google.android.gms.ads.APPLICATION_ID\" android:value=\"ca-app-pub-3793293266938318~6676453677\" />",
               "count": 1
             },
             {
               "xml": "<meta-data android:name=\"com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT\" android:value=\"true\" />",
+              "count": 1
+            }
+          ],
+          "/*": [
+            {
+              "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
               "count": 1
             }
           ],
@@ -71,8 +77,8 @@
   },
   "installed_plugins": {
     "admob-plus-cordova": {
-      "APP_ID_ANDROID": "ca-app-pub-3940256099942544~3347511713",
-      "PLAY_SERVICES_VERSION": "20.1.0",
+      "APP_ID_ANDROID": "ca-app-pub-3793293266938318~6676453677",
+      "PLAY_SERVICES_VERSION": "20.3.0",
       "PACKAGE_NAME": "com.muffingraphics.escapemenghaunted"
     },
     "cordova-plugin-consent": {
@@ -91,7 +97,7 @@
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.muffingraphics.escapemenghaunted"
     },
-    "construct-plugin-file": {
+    "cordova-plugin-file": {
       "PACKAGE_NAME": "com.muffingraphics.escapemenghaunted"
     },
     "cordova-plugin-fullscreen": {
@@ -141,105 +147,105 @@
       ]
     },
     {
-      "id": "construct-plugin-file.DirectoryEntry",
-      "file": "plugins/construct-plugin-file/www/DirectoryEntry.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.DirectoryEntry",
+      "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
+      "pluginId": "cordova-plugin-file",
       "clobbers": [
         "window.DirectoryEntry"
       ]
     },
     {
-      "id": "construct-plugin-file.DirectoryReader",
-      "file": "plugins/construct-plugin-file/www/DirectoryReader.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.DirectoryReader",
+      "file": "plugins/cordova-plugin-file/www/DirectoryReader.js",
+      "pluginId": "cordova-plugin-file",
       "clobbers": [
         "window.DirectoryReader"
       ]
     },
     {
-      "id": "construct-plugin-file.Entry",
-      "file": "plugins/construct-plugin-file/www/Entry.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.Entry",
+      "file": "plugins/cordova-plugin-file/www/Entry.js",
+      "pluginId": "cordova-plugin-file",
       "clobbers": [
         "window.Entry"
       ]
     },
     {
-      "id": "construct-plugin-file.File",
-      "file": "plugins/construct-plugin-file/www/File.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.File",
+      "file": "plugins/cordova-plugin-file/www/File.js",
+      "pluginId": "cordova-plugin-file",
       "clobbers": [
         "window.File"
       ]
     },
     {
-      "id": "construct-plugin-file.FileEntry",
-      "file": "plugins/construct-plugin-file/www/FileEntry.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.FileEntry",
+      "file": "plugins/cordova-plugin-file/www/FileEntry.js",
+      "pluginId": "cordova-plugin-file",
       "clobbers": [
         "window.FileEntry"
       ]
     },
     {
-      "id": "construct-plugin-file.FileError",
-      "file": "plugins/construct-plugin-file/www/FileError.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.FileError",
+      "file": "plugins/cordova-plugin-file/www/FileError.js",
+      "pluginId": "cordova-plugin-file",
       "clobbers": [
         "window.FileError"
       ]
     },
     {
-      "id": "construct-plugin-file.FileReader",
-      "file": "plugins/construct-plugin-file/www/FileReader.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.FileReader",
+      "file": "plugins/cordova-plugin-file/www/FileReader.js",
+      "pluginId": "cordova-plugin-file",
       "clobbers": [
         "window.FileReader"
       ]
     },
     {
-      "id": "construct-plugin-file.FileSystem",
-      "file": "plugins/construct-plugin-file/www/FileSystem.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.FileSystem",
+      "file": "plugins/cordova-plugin-file/www/FileSystem.js",
+      "pluginId": "cordova-plugin-file",
       "clobbers": [
         "window.FileSystem"
       ]
     },
     {
-      "id": "construct-plugin-file.FileUploadOptions",
-      "file": "plugins/construct-plugin-file/www/FileUploadOptions.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.FileUploadOptions",
+      "file": "plugins/cordova-plugin-file/www/FileUploadOptions.js",
+      "pluginId": "cordova-plugin-file",
       "clobbers": [
         "window.FileUploadOptions"
       ]
     },
     {
-      "id": "construct-plugin-file.FileUploadResult",
-      "file": "plugins/construct-plugin-file/www/FileUploadResult.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.FileUploadResult",
+      "file": "plugins/cordova-plugin-file/www/FileUploadResult.js",
+      "pluginId": "cordova-plugin-file",
       "clobbers": [
         "window.FileUploadResult"
       ]
     },
     {
-      "id": "construct-plugin-file.FileWriter",
-      "file": "plugins/construct-plugin-file/www/FileWriter.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.FileWriter",
+      "file": "plugins/cordova-plugin-file/www/FileWriter.js",
+      "pluginId": "cordova-plugin-file",
       "clobbers": [
         "window.FileWriter"
       ]
     },
     {
-      "id": "construct-plugin-file.Flags",
-      "file": "plugins/construct-plugin-file/www/Flags.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.Flags",
+      "file": "plugins/cordova-plugin-file/www/Flags.js",
+      "pluginId": "cordova-plugin-file",
       "clobbers": [
         "window.Flags"
       ]
     },
     {
-      "id": "construct-plugin-file.LocalFileSystem",
-      "file": "plugins/construct-plugin-file/www/LocalFileSystem.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.LocalFileSystem",
+      "file": "plugins/cordova-plugin-file/www/LocalFileSystem.js",
+      "pluginId": "cordova-plugin-file",
       "clobbers": [
         "window.LocalFileSystem"
       ],
@@ -248,66 +254,66 @@
       ]
     },
     {
-      "id": "construct-plugin-file.Metadata",
-      "file": "plugins/construct-plugin-file/www/Metadata.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.Metadata",
+      "file": "plugins/cordova-plugin-file/www/Metadata.js",
+      "pluginId": "cordova-plugin-file",
       "clobbers": [
         "window.Metadata"
       ]
     },
     {
-      "id": "construct-plugin-file.ProgressEvent",
-      "file": "plugins/construct-plugin-file/www/ProgressEvent.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.ProgressEvent",
+      "file": "plugins/cordova-plugin-file/www/ProgressEvent.js",
+      "pluginId": "cordova-plugin-file",
       "clobbers": [
         "window.ProgressEvent"
       ]
     },
     {
-      "id": "construct-plugin-file.fileSystems",
-      "file": "plugins/construct-plugin-file/www/fileSystems.js",
-      "pluginId": "construct-plugin-file"
+      "id": "cordova-plugin-file.fileSystems",
+      "file": "plugins/cordova-plugin-file/www/fileSystems.js",
+      "pluginId": "cordova-plugin-file"
     },
     {
-      "id": "construct-plugin-file.requestFileSystem",
-      "file": "plugins/construct-plugin-file/www/requestFileSystem.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.requestFileSystem",
+      "file": "plugins/cordova-plugin-file/www/requestFileSystem.js",
+      "pluginId": "cordova-plugin-file",
       "clobbers": [
         "window.requestFileSystem"
       ]
     },
     {
-      "id": "construct-plugin-file.resolveLocalFileSystemURI",
-      "file": "plugins/construct-plugin-file/www/resolveLocalFileSystemURI.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.resolveLocalFileSystemURI",
+      "file": "plugins/cordova-plugin-file/www/resolveLocalFileSystemURI.js",
+      "pluginId": "cordova-plugin-file",
       "merges": [
         "window"
       ]
     },
     {
-      "id": "construct-plugin-file.isChrome",
-      "file": "plugins/construct-plugin-file/www/browser/isChrome.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.isChrome",
+      "file": "plugins/cordova-plugin-file/www/browser/isChrome.js",
+      "pluginId": "cordova-plugin-file",
       "runs": true
     },
     {
-      "id": "construct-plugin-file.androidFileSystem",
-      "file": "plugins/construct-plugin-file/www/android/FileSystem.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.androidFileSystem",
+      "file": "plugins/cordova-plugin-file/www/android/FileSystem.js",
+      "pluginId": "cordova-plugin-file",
       "merges": [
         "FileSystem"
       ]
     },
     {
-      "id": "construct-plugin-file.fileSystems-roots",
-      "file": "plugins/construct-plugin-file/www/fileSystems-roots.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.fileSystems-roots",
+      "file": "plugins/cordova-plugin-file/www/fileSystems-roots.js",
+      "pluginId": "cordova-plugin-file",
       "runs": true
     },
     {
-      "id": "construct-plugin-file.fileSystemPaths",
-      "file": "plugins/construct-plugin-file/www/fileSystemPaths.js",
-      "pluginId": "construct-plugin-file",
+      "id": "cordova-plugin-file.fileSystemPaths",
+      "file": "plugins/cordova-plugin-file/www/fileSystemPaths.js",
+      "pluginId": "cordova-plugin-file",
       "merges": [
         "cordova"
       ],
@@ -323,13 +329,13 @@
     }
   ],
   "plugin_metadata": {
-    "admob-plus-cordova": "0.0.0",
-    "cordova-plugin-consent": "0.0.0",
+    "admob-plus-cordova": "1.25.0",
+    "cordova-plugin-consent": "2.2.0",
     "cordova-plugin-device": "2.0.3",
     "construct-mobile-export": "1.0.0",
     "cordova-plugin-inappbrowser": "4.0.0",
     "cordova-plugin-splashscreen": "6.0.0",
-    "construct-plugin-file": "1.0.0",
+    "cordova-plugin-file": "6.0.2",
     "cordova-plugin-fullscreen": "1.1.0"
   }
 }
